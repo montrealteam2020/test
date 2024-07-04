@@ -1,0 +1,39 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.7'
+	id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.demo.application'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(20)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.apache.kafka:kafka-streams'
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.projectlombok:lombok:1.18.28'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor
+	implementation 'org.springframework.boot:spring-boot-configuration-processor:3.3.1'
+
+	// https://mvnrepository.com/artifact/com.h2database/h2
+	//testImplementation 'com.h2database:h2:2.2.224'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
